@@ -51,12 +51,12 @@
 
                 <!-- App Header Logo / Title -->
                 <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20,20,20,16">
-                    <Border CornerRadius="8" Width="32" Height="32" Background="{StaticResource AccentGradientBrush}" Margin="0,0,12,0">
-                        <Path Data="{StaticResource ri-file-download-fill}" Fill="#FFFFFF" Stretch="Uniform" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Border CornerRadius="8" Width="34" Height="34" Background="{StaticResource AccentGradientBrush}" Margin="0,0,12,0">
+                        <Path Data="{StaticResource ri-file-download-fill}" Fill="#050B14" Stretch="Uniform" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="XDM" FontSize="16" FontWeight="Bold" Foreground="{StaticResource CategoryForegroundSelected}"/>
-                        <TextBlock Text="Download Manager" FontSize="11" Foreground="{StaticResource CategoryForegroundNormal}"/>
+                        <TextBlock Text="NEON XDM" FontSize="16" FontWeight="Bold" Foreground="{StaticResource CategoryForegroundSelected}"/>
+                        <TextBlock Text="DOWNLOAD MANAGER" FontSize="10" FontWeight="SemiBold" Foreground="{StaticResource CategoryForegroundNormal}"/>
                     </StackPanel>
                 </StackPanel>
 
