@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.VideoDownloader"
         mc:Ignorable="d"
-        Title="{StaticResource LBL_VIDEO_DOWNLOAD}" Height="500" Width="600" ShowInTaskbar="True" 
-        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
-    <Grid Margin="10">
+        Title="{StaticResource LBL_VIDEO_DOWNLOAD}" Height="520" Width="640" ShowInTaskbar="True"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
+    <Grid Margin="12">
         <local:VideoDownloaderPage1 x:Name="Page1"/>
         <local:VideoDownloaderPage2 Visibility="Collapsed" x:Name="Page2"/>
         <local:VideoDownloaderPage3 Visibility="Collapsed" x:Name="Page3"/>

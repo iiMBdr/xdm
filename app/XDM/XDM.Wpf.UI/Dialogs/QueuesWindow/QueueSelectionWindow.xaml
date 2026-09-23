@@ -5,22 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.QueuesWindow"
         mc:Ignorable="d"
-        Title="{StaticResource Q_MOVE_TO}" 
-        Height="300" Width="400" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
-    <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+        Title="{StaticResource Q_MOVE_TO}"
+        Height="320" Width="440" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListBox Name="LbQueues" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10" 
-                 BorderBrush="{StaticResource ControlBordercolor}" BorderThickness="1"></ListBox>
-        <Button Name="BtnOK" Content="{StaticResource MSG_OK}" Grid.Row="1" Grid.Column="1" Margin="0,0,5,0" Padding="15,3" Click="BtnOK_Click"/>
-        <Button Name="BtnCancel" Content="{StaticResource ND_CANCEL}" Grid.Row="1" Margin="5,0,0,0" Grid.Column="2" Padding="5,3" Click="BtnCancel_Click"/>
 
+        <Grid Margin="20">
+            <ListBox Name="LbQueues" Background="Transparent" BorderThickness="0"/>
+        </Grid>
+
+        <Border Grid.Row="1" Background="{StaticResource ControlBackcolor}" BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="0,1,0,0" Padding="16,12">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="BtnCancel" Content="{StaticResource ND_CANCEL}" Click="BtnCancel_Click" Padding="16,6" Margin="0,0,8,0"/>
+                <Button Name="BtnOK" Content="{StaticResource MSG_OK}" Style="{StaticResource AccentButton}" Click="BtnOK_Click" Padding="18,6"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

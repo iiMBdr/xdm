@@ -101,7 +101,7 @@ namespace XDM.Tests
                     }
                 }
 
-                if (IsObjectStart(reader, "responseHeaders"))// && IsListStart(reader, "realUA"))
+                if (IsObjectStart(reader, "responseHeaders"))
                 {
                     while (reader.Read())
                     {
@@ -153,7 +153,9 @@ namespace XDM.Tests
 
         private void Test()
         {
-            var reader = new JsonTextReader(new StreamReader(@"C:\Users\subhro\Desktop\message.json"));
+            const string sampleJson = "{\"messageType\":\"DOWNLOAD\",\"message\":{\"url\":\"https://example.com/file.zip\"}}";
+            using var textReader = new StringReader(sampleJson);
+            using var reader = new JsonTextReader(textReader);
             if (reader.Read() && reader.TokenType == JsonToken.StartObject)
             {
                 while (reader.Read())

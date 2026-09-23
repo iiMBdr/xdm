@@ -5,42 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.Settings"
         mc:Ignorable="d"
-        Title="{StaticResource TITLE_SETTINGS}" Height="500" Width="700" ShowInTaskbar="False" 
-        WindowStartupLocation="CenterOwner">
+        Title="{StaticResource TITLE_SETTINGS}" Height="540" Width="750" ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Button  Grid.Row="1" Grid.Column="2" Margin="0,10,10,10" Padding="10,3" Content="{StaticResource DESC_SAVE_Q}" Name="BtnOK" Click="BtnOK_Click"/>
-        <Button  Grid.Row="1" Grid.Column="3" Margin="0,10,10,10" Padding="10,3" Content="{StaticResource ND_CANCEL}" Name="BtnCancel" Click="BtnCancel_Click"/>
-        <ListBox Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Name="LbTitles" SelectionChanged="LbTitles_SelectionChanged">
-            <ListBoxItem>
-                <TextBlock Padding="10,10,20,10" Text="{StaticResource SETTINGS_MONITORING}"/>
-            </ListBoxItem>
-            <ListBoxItem>
-                <TextBlock Padding="10,10,20,10" Text="{StaticResource SETTINGS_GENERAL}"/>
-            </ListBoxItem>
-            <ListBoxItem>
-                <TextBlock Padding="10,10,20,10" Text="{StaticResource SETTINGS_NETWORK}"/>
-            </ListBoxItem>
-            <ListBoxItem>
-                <TextBlock Padding="10,10,20,10" Text="{StaticResource SETTINGS_CRED}"/>
-            </ListBoxItem>
-            <ListBoxItem>
-                <TextBlock Padding="10,10,20,10" Text="{StaticResource SETTINGS_ADV}"/>
-            </ListBoxItem>
-        </ListBox>
-        <local:BrowserMonitoringView x:Name="BrowserMonitoringView" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-        <local:GeneralSettingsView x:Name="GeneralSettingsView" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-        <local:NetworkSettingsView x:Name="NetworkSettingsView" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-        <local:PasswordManagerView x:Name="PasswordManagerView" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-        <local:AdvancedSettingsView x:Name="AdvancedSettingsView" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+        <!-- Left Navigation Sidebar -->
+        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                Background="{StaticResource CategoryListBackground}"
+                BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="0,0,1,0"
+                Padding="12,16">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{StaticResource TITLE_SETTINGS}" FontSize="16" FontWeight="Bold" Foreground="{StaticResource ControlForecolor}" Margin="8,0,0,16"/>
+
+                <ListBox Grid.Row="1" Name="LbTitles" SelectionChanged="LbTitles_SelectionChanged" Background="Transparent" BorderThickness="0">
+                    <ListBoxItem>
+                        <TextBlock Padding="8,6" Text="{StaticResource SETTINGS_MONITORING}" FontSize="13" FontWeight="Medium"/>
+                    </ListBoxItem>
+                    <ListBoxItem>
+                        <TextBlock Padding="8,6" Text="{StaticResource SETTINGS_GENERAL}" FontSize="13" FontWeight="Medium"/>
+                    </ListBoxItem>
+                    <ListBoxItem>
+                        <TextBlock Padding="8,6" Text="{StaticResource SETTINGS_NETWORK}" FontSize="13" FontWeight="Medium"/>
+                    </ListBoxItem>
+                    <ListBoxItem>
+                        <TextBlock Padding="8,6" Text="{StaticResource SETTINGS_CRED}" FontSize="13" FontWeight="Medium"/>
+                    </ListBoxItem>
+                    <ListBoxItem>
+                        <TextBlock Padding="8,6" Text="{StaticResource SETTINGS_ADV}" FontSize="13" FontWeight="Medium"/>
+                    </ListBoxItem>
+                </ListBox>
+            </Grid>
+        </Border>
+
+        <!-- Right Content Area -->
+        <Grid Grid.Row="0" Grid.Column="1" Margin="20">
+            <local:BrowserMonitoringView x:Name="BrowserMonitoringView"/>
+            <local:GeneralSettingsView x:Name="GeneralSettingsView"/>
+            <local:NetworkSettingsView x:Name="NetworkSettingsView"/>
+            <local:PasswordManagerView x:Name="PasswordManagerView"/>
+            <local:AdvancedSettingsView x:Name="AdvancedSettingsView"/>
+        </Grid>
+
+        <!-- Bottom Action Bar -->
+        <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource ControlBackcolor}" BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="0,1,0,0" Padding="16,12">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="BtnCancel" Content="{StaticResource ND_CANCEL}" Click="BtnCancel_Click" Padding="16,6" Margin="0,0,8,0"/>
+                <Button Name="BtnOK" Content="{StaticResource DESC_SAVE_Q}" Style="{StaticResource AccentButton}" Click="BtnOK_Click" Padding="18,6"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
