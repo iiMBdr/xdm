@@ -5,15 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.Updater"
         mc:Ignorable="d"
-        Title="{StaticResource OPT_UPDATE_FFMPEG}" Height="250" Width="500" WindowStartupLocation="CenterScreen">
+        Title="{StaticResource OPT_UPDATE_FFMPEG}" Height="200" Width="440" WindowStartupLocation="CenterScreen"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="TxtHeading" Text="{StaticResource STAT_DOWNLOADING}" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-        <ProgressBar Name="Prg" IsIndeterminate="False" Grid.Row="1" VerticalAlignment="Top" Height="5" Width="200"/>
-        <Button Name="BtnCancel" Content="{StaticResource ND_CANCEL}" Grid.Row="2" HorizontalAlignment="Right" Margin="10" Padding="10,3"/>
+
+        <StackPanel Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock x:Name="TxtHeading" Text="{StaticResource STAT_DOWNLOADING}" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource ControlForecolor}" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+            <ProgressBar Name="Prg" IsIndeterminate="False" Height="8" Width="320"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Background="{StaticResource ControlBackcolor}" BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="0,1,0,0" Padding="16,12">
+            <Button Name="BtnCancel" Content="{StaticResource ND_CANCEL}" HorizontalAlignment="Right" Padding="16,6"/>
+        </Border>
     </Grid>
 </Window>

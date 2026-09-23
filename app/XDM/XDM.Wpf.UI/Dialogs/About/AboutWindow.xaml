@@ -5,27 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.About"
         mc:Ignorable="d"
-        Title="{StaticResource MENU_ABOUT}" Height="450" Width="500" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
-    <Grid>
+        Title="{StaticResource MENU_ABOUT}" Height="460" Width="480" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
+    <Grid Margin="24">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Canvas Width="128" Height="128" Background="#2471A3">
-                <Canvas.Clip>
-                    <RectangleGeometry Rect="0,0,128,128" />
-                </Canvas.Clip>
-                <Ellipse Width="200" Height="100" Canvas.Left="-36" Canvas.Top="-30" Fill="#3498DB"/>
-                <Rectangle Width="30" Height="50" Fill="White" Canvas.Left="49" Canvas.Top="30"/>
-                <Polygon Points="34,70 94,70, 64,100" Fill="White" />
-            </Canvas>
-            <TextBlock Name="TxtAppVersion"  FontSize="16" Padding="10,20,10,10" HorizontalAlignment="Center"/>
-            <TextBlock Name="TxtCopyright"  Padding="10,0" HorizontalAlignment="Center"/>
-            <TextBlock Name="TxtWebsite"  Cursor="Hand" Foreground="DeepSkyBlue" 
-                       Padding="10" FontSize="14" HorizontalAlignment="Center" MouseDown="TextBlock_MouseDown"/>
-            <TextBlock Name="TxtOSInfo"
-                       Padding="0,10,0,3" HorizontalAlignment="Center"/>
-            <TextBlock Name="TxtNetFxInfo"
-                       Padding="3" HorizontalAlignment="Center"/>
-            <TextBlock Name="TxtMSIXInfo"
-                       Padding="3" HorizontalAlignment="Center"/>
+            <Border CornerRadius="20" Width="80" Height="80" Background="{StaticResource AccentGradientBrush}" HorizontalAlignment="Center" Margin="0,0,0,16">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="16" ShadowDepth="4" Color="#6366F1" Opacity="0.4"/>
+                </Border.Effect>
+                <Path Data="{StaticResource ri-file-download-fill}" Fill="#FFFFFF" Stretch="Uniform" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <TextBlock Name="TxtAppVersion" FontSize="18" FontWeight="Bold" Foreground="{StaticResource ControlForecolor}" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+            <TextBlock Name="TxtCopyright" FontSize="12" Foreground="{StaticResource ListViewHeaderForecolor}" HorizontalAlignment="Center" Margin="0,0,0,12"/>
+
+            <TextBlock Name="TxtWebsite" Cursor="Hand" Foreground="{StaticResource HyperlinkForecolor}"
+                       FontSize="13" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,20" MouseDown="TextBlock_MouseDown"/>
+
+            <Border Background="{StaticResource ControlBackcolor}" BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="1" CornerRadius="10" Padding="16,12" Width="380">
+                <StackPanel>
+                    <TextBlock Name="TxtOSInfo" FontSize="12" Foreground="{StaticResource ControlForecolor}" HorizontalAlignment="Center" Margin="0,2"/>
+                    <TextBlock Name="TxtNetFxInfo" FontSize="12" Foreground="{StaticResource ListViewHeaderForecolor}" HorizontalAlignment="Center" Margin="0,2"/>
+                    <TextBlock Name="TxtMSIXInfo" FontSize="12" Foreground="{StaticResource ListViewHeaderForecolor}" HorizontalAlignment="Center" Margin="0,2"/>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </Grid>
 </Window>

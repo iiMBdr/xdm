@@ -6,21 +6,21 @@
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.SpeedLimiter"
         xmlns:uc="clr-namespace:XDM.Wpf.UI.Dialogs.SpeedLimiter"
         mc:Ignorable="d"
-        Title="{StaticResource MENU_SPEED_LIMITER}" Height="250" Width="400" WindowStartupLocation="CenterScreen">
+        Title="{StaticResource MENU_SPEED_LIMITER}" Height="200" Width="420" WindowStartupLocation="CenterScreen"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <uc:SpeedLimiter x:Name="SpeedLimiter" Grid.ColumnSpan="3"/>
-        <Button Padding="20,5" Name="BtnOK" Grid.Column="1" Grid.Row="1" 
-                Content="{StaticResource MSG_OK}" Margin="0,5,0,10" Click="BtnOK_Click"/>
-        <Button Padding="15,5" Name="BtnCancel" Grid.Column="2" Grid.Row="1" 
-                Content="{StaticResource ND_CANCEL}" Margin="10,5,10,10" Click="BtnCancel_Click"/>
+
+        <uc:SpeedLimiter x:Name="SpeedLimiter"/>
+
+        <Border Grid.Row="1" Background="{StaticResource ControlBackcolor}" BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="0,1,0,0" Padding="16,12">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="BtnCancel" Content="{StaticResource ND_CANCEL}" Click="BtnCancel_Click" Padding="16,6" Margin="0,0,8,0"/>
+                <Button Name="BtnOK" Content="{StaticResource MSG_OK}" Style="{StaticResource AccentButton}" Click="BtnOK_Click" Padding="18,6"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

@@ -5,25 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.ChromeIntegrator"
         mc:Ignorable="d" Topmost="True"
-        Title="{StaticResource MSG_CHROME_INT}" Height="450" Width="640" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
+        Title="{StaticResource MSG_CHROME_INT}" Height="480" Width="680" WindowStartupLocation="CenterScreen" Closed="Window_Closed"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <local:Page0 Grid.ColumnSpan="4" x:Name="Page0"/>
-        <local:Page1 Grid.ColumnSpan="4" x:Name="Page1"/>
-        <local:Page2 Grid.ColumnSpan="4" x:Name="Page2"/>
-        <local:Page3 Grid.ColumnSpan="4" x:Name="Page3"/>
-        <local:Page4 Grid.ColumnSpan="4" x:Name="Page4"/>
-        <Button Content="{StaticResource MSG_HELP}" Grid.Column="0" Grid.Row="1" Margin="10" Name="BtnHelp" Click="BtnHelp_Click"/>
-        <Button Content="{StaticResource MSG_BACK}" Grid.Column="2" Grid.Row="1" Margin="10,10" Name="BtnBack" Click="BtnBack_Click"/>
-        <Button Content="{StaticResource MSG_NEXT}" Grid.Column="3" Grid.Row="1" Margin="0,10,10,10" Name="BtnNext" Click="BtnNext_Click"/>
+
+        <Grid Grid.Row="0">
+            <local:Page0 x:Name="Page0"/>
+            <local:Page1 x:Name="Page1"/>
+            <local:Page2 x:Name="Page2"/>
+            <local:Page3 x:Name="Page3"/>
+            <local:Page4 x:Name="Page4"/>
+        </Grid>
+
+        <Border Grid.Row="1" Background="{StaticResource ControlBackcolor}" BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="0,1,0,0" Padding="16,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="{StaticResource MSG_HELP}" Name="BtnHelp" Click="BtnHelp_Click" Padding="14,6"/>
+                <Button Grid.Column="2" Content="{StaticResource MSG_BACK}" Name="BtnBack" Click="BtnBack_Click" Padding="14,6" Margin="0,0,8,0"/>
+                <Button Grid.Column="3" Content="{StaticResource MSG_NEXT}" Name="BtnNext" Style="{StaticResource AccentButton}" Click="BtnNext_Click" Padding="18,6"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

@@ -5,60 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.ProgressWindow"
         mc:Ignorable="d"
-        Title="DownloadProgressWindow" Height="280" Width="450" Closing="Window_Closing"
-         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
-    <DockPanel>
-        <Grid DockPanel.Dock="Bottom" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="BtnHide" Margin="0" Padding="20,5" Content="{StaticResource DWN_HIDE}" Click="BtnHide_Click"/>
-            <Button Grid.Column="2" Name="BtnStop" Margin="0" Padding="20,5" Content="{StaticResource BTN_STOP_PROCESSING}" Click="BtnStop_Click"/>
-            <Button Grid.Column="3" Name="BtnPause" Margin="10,0,0,0" Padding="15,5" Content="{StaticResource MENU_PAUSE}" Click="BtnPause_Click"/>
-        </Grid>
-        <Border Background="{StaticResource ListViewBackcolor}" Padding="10">
+        Title="Download Progress" Height="300" Width="500" Closing="Window_Closing"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}" Padding="20">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="48"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Path Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" 
-                  VerticalAlignment="Center" 
-                  Margin="10" 
-                  StrokeThickness="0" 
-                  Stretch="Uniform" 
-                  Fill="{StaticResource ToolButtonMouseDisabledForecolor}"
-                  Width="32" Height="32"  
-                  Stroke="{StaticResource ToolButtonMouseDisabledForecolor}"
-                  Data="{StaticResource ri-file-download-line}"
-                  SnapsToDevicePixels="True"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="TxtFileName" Grid.ColumnSpan="3"
-                           Text="" Margin="10,10,0,0" 
-                           FontSize="16" TextTrimming="CharacterEllipsis"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TxtUrl" Text="---" Margin="10,0" Grid.ColumnSpan="3"
-                           Foreground="{StaticResource ToolButtonMouseDisabledForecolor}" TextTrimming="CharacterEllipsis"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" x:Name="TxtStatus" Text="---" Margin="10,5" />
-                <TextBlock Grid.Row="3" Grid.Column="2" x:Name="TxtSpeed" Text="---" Margin="10,5" HorizontalAlignment="Right" />
-                <ProgressBar Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" x:Name="PrgProgress" MinHeight="5" Margin="10,5"  />
-                <TextBlock Grid.Row="5" Grid.Column="1" x:Name="TxtETA" Text="" Margin="10,5" />
-                <TextBlock Grid.Row="5" Grid.Column="2" x:Name="TxtSpeedLimit" Text="{StaticResource MSG_NO_SPEED_LIMIT}" 
-                           Margin="10,5"  HorizontalAlignment="Right"
-                           Foreground="{StaticResource HyperlinkForecolor}"
-                           Cursor="Hand" MouseDown="TxtSpeedLimit_MouseDown"/>
+
+                <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" CornerRadius="10" Width="42" Height="42" Background="{StaticResource AccentGradientBrush}" VerticalAlignment="Top" Margin="0,2,12,0">
+                    <Path Data="{StaticResource ri-file-download-fill}" Fill="#FFFFFF" Stretch="Uniform" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="TxtFileName" Text="" FontSize="15" FontWeight="Bold" Foreground="{StaticResource ControlForecolor}" TextTrimming="CharacterEllipsis"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TxtUrl" Text="---" Margin="0,2,0,12" FontSize="12" Foreground="{StaticResource ListViewHeaderForecolor}" TextTrimming="CharacterEllipsis"/>
+
+                <!-- Status & Speed Header -->
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,6">
+                    <TextBlock x:Name="TxtStatus" Text="---" FontSize="13" FontWeight="Medium" Foreground="{StaticResource ControlForecolor}"/>
+                    <TextBlock x:Name="TxtSpeed" Text="---" FontSize="13" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" HorizontalAlignment="Right"/>
+                </Grid>
+
+                <!-- Modern Progress Bar -->
+                <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="PrgProgress" Height="8" Margin="0,0,0,10"/>
+
+                <!-- ETA & Speed Limit Footer -->
+                <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                    <TextBlock x:Name="TxtETA" Text="" FontSize="12" Foreground="{StaticResource ListViewHeaderForecolor}"/>
+                    <TextBlock x:Name="TxtSpeedLimit" Text="{StaticResource MSG_NO_SPEED_LIMIT}" FontSize="12"
+                               HorizontalAlignment="Right" Foreground="{StaticResource HyperlinkForecolor}"
+                               Cursor="Hand" MouseDown="TxtSpeedLimit_MouseDown" FontWeight="Medium"/>
+                </Grid>
             </Grid>
         </Border>
-    </DockPanel>
+
+        <Border Grid.Row="1" Background="{StaticResource ControlBackcolor}" BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="0,1,0,0" Padding="16,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Name="BtnHide" Content="{StaticResource DWN_HIDE}" Click="BtnHide_Click" Padding="14,6"/>
+                <Button Grid.Column="2" Name="BtnStop" Content="{StaticResource BTN_STOP_PROCESSING}" Click="BtnStop_Click" Padding="14,6" Margin="0,0,8,0"/>
+                <Button Grid.Column="3" Name="BtnPause" Content="{StaticResource MENU_PAUSE}" Style="{StaticResource AccentButton}" Click="BtnPause_Click" Padding="16,6"/>
+            </Grid>
+        </Border>
+    </Grid>
 </Window>

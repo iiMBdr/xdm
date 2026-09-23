@@ -5,55 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XDM.Wpf.UI.Dialogs.DownloadSelection"
         mc:Ignorable="d"
-        Title="{StaticResource BAT_SELECT_ITEMS}" Height="500" Width="600" ShowInTaskbar="True" 
-        WindowStartupLocation="CenterScreen">
+        Title="{StaticResource BAT_SELECT_ITEMS}" Height="520" Width="640" ShowInTaskbar="True"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
     <Window.Resources>
         <ContextMenu x:Key="DownloadLaterContextMenu"></ContextMenu>
-        <MenuItem x:Name="DontAddToQueueMenuItem" x:Key="DontAddToQueueMenuItem" Header="{StaticResource LBL_QUEUE_OPT3}" 
-                  Click="DontAddToQueueMenuItem_Click"/>
-        <MenuItem x:Name="QueueAndSchedulerMenuItem" x:Key="QueueAndSchedulerMenuItem" Header="{StaticResource DESC_Q_TITLE}" 
-                  Click="QueueAndSchedulerMenuItem_Click"/>
+        <MenuItem x:Name="DontAddToQueueMenuItem" x:Key="DontAddToQueueMenuItem" Header="{StaticResource LBL_QUEUE_OPT3}" Click="DontAddToQueueMenuItem_Click"/>
+        <MenuItem x:Name="QueueAndSchedulerMenuItem" x:Key="QueueAndSchedulerMenuItem" Header="{StaticResource DESC_Q_TITLE}" Click="QueueAndSchedulerMenuItem_Click"/>
     </Window.Resources>
-    <Grid Margin="10">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <CheckBox Name="ChkSelectAll" Content="{StaticResource VID_CHK}" Grid.ColumnSpan="5" Margin="5,0,0,10" 
-                  Checked="ChkSelectAll_Checked" Unchecked="ChkSelectAll_Checked"/>
-        <ListBox Name="LbDownloadList" Grid.Row="1" Grid.ColumnSpan="5" Margin="0,0,0,0" BorderThickness="1" 
-                  BorderBrush="{StaticResource ControlBordercolor}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <CheckBox IsChecked="{Binding IsSelected, NotifyOnSourceUpdated=True,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="MycheckBox" Content="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <TextBlock Grid.Row="2" Text="{StaticResource LBL_SAVE_IN}" VerticalAlignment="Center" Margin="0,10" />
-        <TextBox Name="TxtSaveIn" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,10" Padding="3"/>
-        <Button Name="BtnBrowse" Grid.Row="2" Grid.Column="4" Content="..." Margin="5,10,0,10" Padding="0" Click="BtnBrowse_Click" />
-        <Button Name="BtnMore" Grid.Row="3" Content="{StaticResource ND_MORE}" Margin="0,10,0,0" Padding="15,3" Click="BtnMore_Click"/>
-        <Button Name="BtnDownloadLater" Grid.Row="3" Grid.Column="2" Content="{StaticResource ND_DOWNLOAD_LATER}" Margin="0,10,0,0" Padding="15,3"
-                Click="BtnDownloadLater_Click"/>
-        <Button Name="BtnDownloadNow" Grid.Row="3"  Grid.Column="3" Grid.ColumnSpan="2" Content="{StaticResource ND_DOWNLOAD_NOW}" Margin="10,10,0,0" 
-                Padding="15,3" Click="BtnDownloadNow_Click"/>
-        <Grid Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{StaticResource O_VID_FMT}" Margin="0,0,0,5" Visibility="Collapsed"/>
+
+        <Grid Margin="20,16,20,8">
+            <CheckBox Name="ChkSelectAll" Content="{StaticResource VID_CHK}" Checked="ChkSelectAll_Checked" Unchecked="ChkSelectAll_Checked" FontSize="13" FontWeight="SemiBold"/>
         </Grid>
+
+        <Grid Grid.Row="1" Margin="20,0,20,12">
+            <ListBox Name="LbDownloadList" Background="Transparent" BorderThickness="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox IsChecked="{Binding IsSelected, NotifyOnSourceUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="MycheckBox" Content="{Binding Name}" Padding="4,2"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="20,0,20,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{StaticResource LBL_SAVE_IN}" VerticalAlignment="Center" FontSize="13" FontWeight="Medium"/>
+            <TextBox Name="TxtSaveIn" Grid.Column="1" VerticalAlignment="Center"/>
+            <Button Name="BtnBrowse" Grid.Column="2" Content="..." Click="BtnBrowse_Click" Padding="12,6" Margin="8,0,0,0"/>
+        </Grid>
+
+        <Border Grid.Row="3" Background="{StaticResource ControlBackcolor}" BorderBrush="{StaticResource ToolbarBordercolor}" BorderThickness="0,1,0,0" Padding="16,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Name="BtnMore" Content="{StaticResource ND_MORE}" Click="BtnMore_Click" Padding="14,6"/>
+                <Button Grid.Column="2" Name="BtnDownloadLater" Content="{StaticResource ND_DOWNLOAD_LATER}" Click="BtnDownloadLater_Click" Padding="14,6" Margin="0,0,8,0"/>
+                <Button Grid.Column="3" Name="BtnDownloadNow" Content="{StaticResource ND_DOWNLOAD_NOW}" Style="{StaticResource AccentButton}" Click="BtnDownloadNow_Click" Padding="18,6"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
